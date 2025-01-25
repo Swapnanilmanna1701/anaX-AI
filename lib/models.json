@@ -1,0 +1,19 @@
+{
+  "models": [
+    {
+      "id": "gpt-4o",
+      "provider": "Azure",
+      "providerId": "azure",
+      "name": "GPT-4o"
+    },
+    {
+      "id": "accounts/fireworks/models/llama-v3p1-70b-instruct",
+      "provider": "Fireworks",
+      "providerId": "fireworks",
+      "name": "Llama 3.1 70B"
+    }
+  ]
+}
+
+
+
