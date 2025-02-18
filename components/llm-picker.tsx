@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "../components/ui/select";
 
-import { LLMModel, LLMModelConfig } from "@/lib/model";
+import { LLMModel, LLMModelConfig } from "../lib/model";
 import "core-js/features/object/group-by.js";
 import Image from "next/image";
 import { Label } from "./ui/label";
@@ -23,7 +23,7 @@ export function LLMPicker({
   onLanguageModelChange: (config: LLMModelConfig) => void;
 }) {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center py-1 space-x-2">
       <div className="flex flex-col">
         <Select
           name="languageModel"

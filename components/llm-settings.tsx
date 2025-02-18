@@ -1,4 +1,5 @@
 import { Button } from "./ui/button";
+import SettingButton from "../components/settingbutton"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,11 +26,11 @@ export function LLMSettings({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          
           size="icon"
-          className="text-muted-foreground h-8 w-8 rounded-sm"
+          className="text-white h-8 w-8 rounded-sm"
         >
-          <Settings2 className="h-4 w-4" />
+          <SettingButton  />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">

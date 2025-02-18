@@ -1,16 +1,22 @@
 "use client";
 import { useChat } from "ai/react";
 import { MessageComponent } from "../components/message";
-import { FileText, PlayIcon, PlusIcon, X } from "lucide-react";
+import ButtonGenerate from "../components/aibutton";
+import Loading from "../components/loading"
+import { FileText, X } from "lucide-react";
 import { extractCodeFromText } from "../lib/code";
 import { useEffect, useState } from "react";
 import modelsList from "../lib/models.json";
 import { LLMModelConfig } from "../lib/model";
 import { LLMPicker } from "../components/llm-picker";
+//import SettingButton from "../components/settingbutton"
 import { LLMSettings } from "../components/llm-settings";
+import PlusButton from "../components/plusbutton"
 import { useLocalStorage } from "usehooks-ts";
 import { preProcessFile } from "../lib/preprocess";
 import Image from "next/image";
+//import Input from "../components/input";
+import SlideButton from "../components/slidebutton"
 
 export default function Home() {
   const [files, setFiles] = useState<File[]>([]);
@@ -146,7 +152,7 @@ export default function Home() {
               {exampleMessages.map((msg) => (
                 <button
                   key={msg}
-                  className="flex items-center gap-2 p-1.5 border rounded-lg text-gray-800"
+                  className="flex items-center gap-2 p-2 mb-3 border rounded-lg text-white"
                   onClick={() => setInput(msg)}
                 >
                   <span className="text-sm truncate">{msg}</span>
@@ -155,7 +161,7 @@ export default function Home() {
             </div>
           )}
           <div className="flex gap-2 justify-between items-end">
-            <div className="flex gap-2">
+            <div className="flex gap-4 py-1 text-white">
               <LLMPicker
                 models={modelsList.models}
                 languageModel={languageModel}
@@ -169,12 +175,12 @@ export default function Home() {
               />
             </div>
             {isLoading && (
-              <span className="text-xs text-gray-700">Loading…</span>
+              <Loading />
             )}
           </div>
           <form
             onSubmit={customSubmit}
-            className="flex border p-1 border-1.5 border-orange-400 rounded-xl overflow-hidden shadow-md"
+            className="flex  gap-1 p-1 overflow-hidden shadow-md"
           >
             <input
               type="file"
@@ -187,28 +193,23 @@ export default function Home() {
             />
             <button
               type="button"
-              className="border p-1.5 rounded-lg hover:bg-slate-200 text-slate-800"
+              className="text-slate-800"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById("multimodal")?.click();
               }}
             >
-              <PlusIcon className="w-5 h-5" />
+              <PlusButton />
             </button>
             <input
               autoFocus
               required
-              className="w-full px-2 outline-none"
+              className="w-full border-2 rounded-xl px-2 outline-none bg-black text-white"
               value={input}
               placeholder="Enter your prompt..."
               onChange={handleInputChange}
             />
-            <button
-              type="submit"
-              className="bg-orange-500 text-white p-1.5 rounded-lg hover:bg-orange-500/80"
-            >
-              <PlayIcon className="w-5 h-5" />
-            </button>
+            <ButtonGenerate />
           </form>
         </div>
       </div>

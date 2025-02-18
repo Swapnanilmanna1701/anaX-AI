@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ToolOutput } from "./tooloutput";
 import { ToolResult } from "../lib/types";
+import Loader from "./loaderbot"
 
 export function MessageComponent({ message }: { message: Message }) {
   return (
@@ -21,7 +22,7 @@ export function MessageComponent({ message }: { message: Message }) {
           {message.role === "user" ? (
             <UserIcon className="mt-1 w-6 h-6 text-orange-500" />
           ) : (
-            <BotIcon className="mt-1 w-6 h-6 text-orange-500" />
+            <Loader />
           )}
         </div>
         <div className="overflow-hidden flex-1 flex flex-col gap-2">

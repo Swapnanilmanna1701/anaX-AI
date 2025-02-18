@@ -14,9 +14,9 @@ export function ToolOutput({ result }: { result: ToolResult | undefined }) {
 
   if (toolResult?.error) {
     return (
-      <div className="text-red-500 border border-red-200 rounded-xl bg-red-500/10 text-sm">
+      <div className="text-red-500 border border-violet-500 rounded-xl bg-red-500/10 text-sm ">
         <div className="flex items-center gap-2 pt-4 px-4">
-          <AlertTriangle className="w-4 h-4" />
+          <AlertTriangle className="w-4 h-4 text-white" />
           <span className="font-semibold">Error: {toolResult.error.name}</span>
         </div>
         <pre className="overflow-auto p-4">{toolResult.error.traceback}</pre>
@@ -27,23 +27,23 @@ export function ToolOutput({ result }: { result: ToolResult | undefined }) {
   return toolResult.results.map((result: Result, index: number) => (
     <div key={index} className="flex flex-col border rounded-xl shadow-sm">
       <div className="flex items-center justify-between p-2">
-        <div className="p-2 font-semibold text-gray-800 text-sm flex items-center gap-2">
-          <ChartNoAxesCombined className="w-4 h-4" />
+        <div className="p-2 font-semibold text-violet-500 text-3xl flex items-center gap-2">
+          <ChartNoAxesCombined className="w-6 h-6" />
           {result.extra?.chart.title}
         </div>
-        <div className="flex justify-end border rounded-lg overflow-hidden">
+        <div className="flex justify-end border-violet-500 rounded-lg overflow-hidden">
           <button
-            className={`px-3 py-2 font-semibold text-sm ${
-              viewMode === "static" ? "bg-orange-500/10 text-orange-500" : ""
+            className={`px-3 py-2 font-semibold border border-violet-500 rounded-l-xl text-sm text-white ${
+              viewMode === "static" ? "text-white bg-violet-500 border-1 border-white" : ""
             }`}
             onClick={() => setViewMode("static")}
           >
             Static
           </button>
           <button
-            className={`px-3 py-2 font-semibold text-sm ${
+            className={`px-3 py-2 font-semibold text-sm  text-white ${
               viewMode === "interactive"
-                ? "bg-orange-500/10 text-orange-500"
+                ? "bg-violet-500 text-white border-1 border-white"
                 : ""
             }`}
             onClick={() => setViewMode("interactive")}
@@ -52,7 +52,7 @@ export function ToolOutput({ result }: { result: ToolResult | undefined }) {
           </button>
         </div>
       </div>
-      <div className="p-4">
+      <div className="p-4 text-white">
         <RenderResult result={result} viewMode={viewMode} />
       </div>
     </div>
