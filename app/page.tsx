@@ -3,7 +3,6 @@ import { useChat } from "ai/react";
 import { MessageComponent } from "../components/message";
 import { FileText, PlayIcon, PlusIcon, X } from "lucide-react";
 import { extractCodeFromText } from "../lib/code";
-import Logo from "../components/logo";
 import { useEffect, useState } from "react";
 import modelsList from "../lib/models.json";
 import { LLMModelConfig } from "../lib/model";
@@ -113,27 +112,8 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen max-h-screen">
-      <nav className="flex gap-0.5 justify-between items-center p-2 top-0 fixed left-0 right-0 bg-white/80 backdrop-blur-sm shadow-sm z-10">
-        <div className="flex items-center gap-2">
-          <Image
-          src="/thirdparty/logos/logo.png"
-          alt="Alterdomus Logo"
-          width={40}
-          height={40}
-          />
-          <h1 className="text-md font-medium">
-            Analyst by{" "}
-            <a
-              href="https://alterdomus.com"
-              target="_blank"
-              className="underline decoration-[rgba(229,123,0,.3)] decoration-2 text-[#ff8800]"
-            >
-              AD
-            </a>
-          </h1>
-        </div>
-      </nav>
+    <div className="flex flex-col min-h-screen max-h-screen bg-black">
+      
       <div className="flex-1 overflow-y-auto pt-14" id="messages">
         {messages.map((m) => (
           <MessageComponent key={m.id} message={m} />
